@@ -1,0 +1,57 @@
+name: despliegue para GitHub Pages
+
+on:
+    push:
+        branches: ["main"]
+    workflow_dispatch:
+
+permissions: 
+   contents: read
+   pages: write
+   id-token: write
+
+env:
+ DEPLOY_BASE_URL: ${{vars.DEPLOY_BASE_URL}}
+
+concurrency:
+ group: "pages"
+ cancel-in-progress: false
+
+jobs:
+ deploy:
+  environment:
+   name: github-pages
+   url: ${{ steps.github_pages.outputs.url }}
+
+  runs-on: ubuntu-latest
+
+  steps:
+   - name: Checkout
+     uses: actions/checkout@v4
+
+   - name: Setup NodeJS
+     uses: actions/setup-node@v4
+     with:
+      node-version: '20'
+      cache: 'npm'
+
+   - name: Instalar las Dependencias
+     run: npm install
+
+   - name: verificar las variables de ambient
+     run: echo "DEPLOY_BASE_URL=${{ env.DEPLOY_BASE_URL }}"
+
+   - name: Compilar
+     run: npm run build
+
+   - name: Configurar Github Pages
+     uses: actions/configure-pages@v5
+
+   - name: Subir Compilacion a GitHub Pages
+     uses: actions/upload-pages-artifact@v3
+     with:
+      path: './dist'
+
+   - name: Publicar
+     id: deployment
+     uses: actions/deploy-pages@v4

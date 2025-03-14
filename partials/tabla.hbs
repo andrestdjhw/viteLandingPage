@@ -1,0 +1,24 @@
+<table border="1">
+    <thead>
+        <tr>
+            <th>Equipo</th>
+            <th>Jugados</th>
+            <th>Ganados</th>
+            <th>Perdidos</th>
+            <th>Empatados</th>
+            <th>Puntos</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each equipos}}
+        <tr>
+            <td>{{nombre}}</td>
+            <td>{{jugados}}</td>
+            <td>{{ganados}}</td>
+            <td>{{perdidos}}</td>
+            <td>{{empatados}}</td>
+            <td>{{puntos}}</td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>

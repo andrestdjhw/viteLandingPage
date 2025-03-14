@@ -1,0 +1,34 @@
+table {
+    width: 100%;
+    border-collapse: collapse;
+    border: 1px solid @table-border-color;
+
+    th, td {
+        padding: 8px 12px;
+        text-align: left;
+        border: 1px solid @table-border-color;
+    }
+
+    th {
+        background-color: @header-bg-color;
+        color: @header-text-color;
+    }
+
+    tbody tr {
+        background-color: @row-bg-color;
+
+        &:nth-child(even) {
+            background-color: @row-alt-bg-color;
+        }
+
+        &:hover {
+            background-color: @row-hover-bg-color;
+        }
+    }
+}
+
+// Estilos adicionales para el contenedor de la tabla
+#liga-container {
+    margin: 20px auto;
+    max-width: 800px;
+}

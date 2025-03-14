@@ -1,0 +1,35 @@
+.center-content() {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.responsive-text(@size, @line-height) {
+    font-size: @size;
+    line-height: @line-height;
+}
+
+
+.fw-img-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+
+.defaultSpacing {
+    padding: @p-3 @p-4;
+}
+
+
+.default-button {
+    display: inline-block;
+    .defaultSpacing();
+    text-align: center;
+    font-weight: bold;
+    font-size: 1rem;
+    border: 1px solid @primary-color;
+    background-color: @primary-color;
+    color: @primary-text-color;
+    text-decoration: none;
+}
